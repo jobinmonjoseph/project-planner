@@ -1,0 +1,161 @@
+### list all projects
+
+GET http://127.0.0.1:8000/projects/
+
+
+#### create a project
+
+POST http://127.0.0.1:8000/projects/
+Content-Type: multipart/form-data;boundary=abc
+
+--abc
+content-Disposition: form-data; name="name"
+
+BookNest - Online Library Management System
+--abc
+Content-Disposition: form-data; name="description"
+<h2>BookNest - Online Library Management System</h2>
+
+<p>
+BookNest is a comprehensive Django-based Online Library Management System designed
+to streamline book catalog management, member registration, borrowing workflows,
+reservations, and reporting. The platform provides role-based access for administrators,
+librarians, and members, enabling efficient library operations through a modern
+web interface and RESTful APIs.
+</p>
+
+<h3>Key Features</h3>
+<ul>
+    <li>User Authentication & Authorization</li>
+    <li>Book and Category Management</li>
+    <li>ISBN Tracking and Inventory Control</li>
+    <li>Borrow and Return Management</li>
+    <li>Book Reservation System</li>
+    <li>Advanced Search & Filtering</li>
+    <li>User Reviews and Ratings</li>
+    <li>Admin Dashboard with Analytics</li>
+    <li>Django REST Framework API Support</li>
+    <li>CKEditor-based Content Management</li>
+</ul>
+
+<h3>Technology Stack</h3>
+<ul>
+    <li>Django</li>
+    <li>Django REST Framework</li>
+    <li>MySQL</li>
+    <li>Bootstrap 5</li>
+    <li>CKEditor 5</li>
+    <li>JWT Authentication</li>
+</ul>
+
+<h3>Benefits</h3>
+<p>
+BookNest improves operational efficiency, simplifies inventory tracking,
+enhances user experience, and provides detailed reports for better decision-making.
+</p>
+
+--abc
+Content-Disposition: form-data; name="document"; filename="booknestdoc.pdf"
+Content-Type: application/pdf
+
+"C:\Users\job00\Downloads\booknestdoc.pdf"
+--abc--
+
+### retrieve a  project
+
+GET http://127.0.0.1:8000/projects/7c124279-b0a7-4d3f-b442-52037c345305/
+
+#### update a project
+
+PATCH  http://127.0.0.1:8000/projects/7c124279-b0a7-4d3f-b442-52037c345305/
+Content-Type: multipart/form-data;boundary=abc
+
+--abc
+content-Disposition: form-data; name="name"
+
+SkillBridge - A Learning Platform
+--abc
+
+### soft delete a  project
+
+DELETE  http://127.0.0.1:8000/projects/7c124279-b0a7-4d3f-b442-52037c345305/
+
+### list all project 
+
+GET http://127.0.0.1:8000/assignedprojects/
+
+### create an assigned project
+# Replace these IDs with an existing project, project coordinator, and developer IDs.
+POST http://127.0.0.1:8000/assignedprojects/
+Content-Type: application/json
+
+{
+  "project": 2,
+  "coordinator": 2,
+  "developers": [4, 5],
+  "project_duration": 6,
+  "project_start_date": "2026-11-03",
+  "project_tentative_end_date": "2027-01-02"
+}
+
+### list all project 
+
+GET http://127.0.0.1:8000/assignedprojects/8e16b26e-2b76-4823-badd-8fb5ef8907b3/
+
+
+### update an assigned project
+
+PATCH http://127.0.0.1:8000/assignedprojects/8e16b26e-2b76-4823-badd-8fb5ef8907b3/
+Content-Type: application/json
+
+{
+
+  "developers": [4, 5, 9]
+
+}
+
+### delete 
+
+DELETE http://127.0.0.1:8000/assignedprojects/8e16b26e-2b76-4823-badd-8fb5ef8907b3/
+
+
+### list all project 
+
+GET http://127.0.0.1:8000/tasks/8e16b26e-2b76-4823-badd-8fb5ef8907b3/
+
+
+### create a task
+POST http://127.0.0.1:8000/tasks/8e16b26e-2b76-4823-badd-8fb5ef8907b3/
+Content-Type: application/json
+
+{
+  "assigned_to": 6,
+  "title": "Design the project dashboard",
+  "description": "Create the initial dashboard layout.",
+  "priority": "Medium"
+}
+
+### retrieve a task
+
+GET http://127.0.0.1:8000/tasks-retrieve-update-destroy/b42e7b30-c9f7-4019-b546-c9a217640519/
+
+
+### update a task
+
+PATCH http://127.0.0.1:8000/tasks-retrieve-update-destroy/b42e7b30-c9f7-4019-b546-c9a217640519/
+Content-Type: application/json
+
+{
+ 
+  "duration": "02:00:00",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-07"
+}
+
+### delete a task
+
+DELETE http://127.0.0.1:8000/tasks-retrieve-update-destroy/b42e7b30-c9f7-4019-b546-c9a217640519/
+
+### generate task by ai
+
+POST  http://127.0.0.1:8000/generate-task/8e16b26e-2b76-4823-badd-8fb5ef8907b3/
